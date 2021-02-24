@@ -1,0 +1,152 @@
+Introduction to Environment Variables
+134 comments
+In computer operating systems, an environment is an area that contains information about the behaviour of programs and applications.
+
+Linux environment variables are used by applications to get information about the environment, and each environment variable is a variable with a name and an associated value.
+
+Every time the environment is configured a new shell session is created, and this can be used as a learning experience to see how changing Linux environment variables can change things like the appearance of the shell, create paths to executable files, keyboard layout settings, and defining the default home directory for example.
+
+Variables have the following format and by convention have upper case names. Though they are case-sensitive, so it is possible to have lower case names. Also, there is no space around the equals = symbol.
+
+KEY=value KEY=”Another value”
+
+If you assign multiple values to a variable then separate them with a colon : character.
+
+KEY=value1:value2
+
+There are two types of variables:
+
+Environment variables are system wide and are inherited by all system processes and shells.
+
+Shell variables only apply internally to the current shell instance.
+
+How do we use Linux commands to list and set environment variables?
+
+This can be achieved by using the following commands.
+
+env – This allows you to run another program in a custom environment without modifying the current one. When used without an argument it will print a list of the current environment variables.
+
+printenv – This prints all the specified environment variables. For example, to display the value of the HOME environment variable type:
+
+printenv HOME
+This will print out the path of the currently logged in user.
+
+/home/manager
+You can also pass more than one argument to the printenv command, in the form:
+
+printenv <argument1><argument 2>
+Try this example
+
+printenv LANG PWD
+This will produce an output similar to this one.
+
+en_GB.UTF-8
+Running printenv without any arguments will show a list of all the environment variables.
+
+printenv
+This will produce an extensive output similar to the truncated one below.
+
+CLUTTER_IM_MODULE=xim
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_MENU_PREFIX=gnome-
+LANG=en_GB.UTF-8
+DISPLAY=:0
+GNOME_SHELL_SESSION_MODE=ubuntu
+COLORTERM=truecolor
+USERNAME=manager
+XDG_VTNR=1
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+XDG_SESSION_ID=1
+USER=manager
+DESKTOP_SESSION=ubuntu
+QT4_IM_MODULE=xim
+TEXTDOMAINDIR=/usr/share/locale/
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/f05913a2_61f0_4166_8fd7_9a75b1b624d0……..
+Some of the more common environment variables are highlighted below.
+
+Command	Description
+printenv USER	Current logged in user
+Printenv HOME	Home directory of the current user
+Printenv EDITOR	The default editor
+SHELL	The path of the current user’s shell
+LOGNAME	The name of the current user
+PATH	A list of directories to be searched when executing commands
+LANG	The current locales settings
+TERM	The current terminal emulation
+MAIL	Location of where the user mail is stored
+set – This sets or unsets shell variables. If used without an argument then it will print a list of all variables, both shell and environment, and shell functions.
+
+Type set in a terminal and it will produce a long list of all the variables.
+
+BASH=/bin/bash
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extglob:extquote:force_fignore:histappend:interactive_comments:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_COMPLETION_VERSINFO=([0]="2" [1]="8")
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="4" [1]="4" [2]="20" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+BASH_VERSION='4.4.20(1)-release'
+CLUTTER_IM_MODULE=xim
+COLORTERM=truecolor
+COLUMNS=80
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+DESKTOP_SESSION=ubuntu
+DIRSTACK=()
+DISPLAY=:0
+EUID=1000
+GDMSESSION=ubuntu………
+unset – This deletes shell and environment variables.
+
+export – This command sets environment variables.
+
+Examples
+Below are a few examples highlighting the difference between Environment and Shell variables. We’ll first create a Shell variable and then transform it into an Environment variable.
+
+Create a new variable called MY_VARIABLE and give a value of Linux_Variable.
+
+MY_VARIABLE=’Linux_Variable’
+Verify the variable exists by typing:
+
+echo $MY_VARIABLE
+This will display:
+
+Linux_Variable
+Use the printenv command to check whether MY_VARIABLE is an environment variable or not. If the output is empty then it is not an environment variable.
+
+printenv MY_VARIABLE
+This will display no output.
+
+Now we have our Shell variable, we can transform it into an Environment variable by typing:
+
+export MY_VARIABLE
+Check MY_VARIABLE exists by typing
+
+printenv MY_VARIABLE
+This time, the variable will now be displayed as it is an Environment variable: Linux_Variable
+
+Please note that variables created in this manner will only be available in the current session, and will be lost when you log out or open a new shell.
+
+In order to make the Environment variables persistent you’ll need to add them to specific Linux files.
+
+Edit the following file using the nano editor.
+
+nano /etc/environment
+Add MY_VARIABLE=value to a new line and Save. Define your value accordingly. This could be text or a number for example.
+
+Another useful method, if you are using Bash, is to declare your variable in the hidden .bashrc profile file.
+
+nano ~/.bashrc
+Add in a new line to the .bashrc file
+
+export MYVARIABLE=” value”
+
+Save and update the changes to the .bashrc file by typing
+
+source ~/.bashrc
+Hope you find this examples useful, do leave your comments in the comments section below.
+
+© Wellcome Genome Campus Advanced Courses and Scientific Conferences
